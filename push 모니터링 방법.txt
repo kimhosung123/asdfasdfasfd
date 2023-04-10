@@ -1,0 +1,28 @@
+cosprdums01
+cosdevums01
+553040
+[Server Log]
+1. server log path : /applog/spns/spns_server.log(당일 Log)
+2. command : tail -10f spns_server.log
+3 방법 확인 :  DeviceService.registDevice - RegistDevice <== log에 정상적으로 노출되는지 확인
+              (memberNo, pushToken 정보 등등 확인)
+
+[DB TABLE]
+1. TMB_DVCEAPP 테이블에서 MBR_NO로 검색
+2. TMB_PUSHMSG 테이블에서는 발송 확인 MBR_NO 로 검색
+
+
+
+[금일 확인 내용]
+1. DeviceService.registDevice - RegistDevice 정상적으로 올려주는지 확인
+2. 발송테이블에서 바뀐 PUSH_TOKEN 값으로 발송되는지 확인
+3. 최종 확인내용 : APP 에서 최초 설치 후 앱을 재실행 전까지 RegistDevice 절차가 이루어지지 않아
+    바뀐 정보로 PUSH  발송을 할수 없었음.
+
+
+
+http://10.0.101.101:20080/dbclient/select.do : 운영
+http://192.168.201.41:20080/dbclient/select.do : 개발
+
+http://192.168.201.41:9081/spns.admin/index.do : 개발 admin / Qhacosmo1!
+http://10.0.101.101:9081/spns.admin/indexFrame.do : 운영 admin / qhacosmo1!
